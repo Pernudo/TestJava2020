@@ -1,4 +1,4 @@
-# Test Java 2020 ☕
+# Test Java 2020
 
 ## Descripción General
 Este repositorio es una prueba de un desarrollo Java.
