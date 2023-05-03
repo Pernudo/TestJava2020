@@ -2,13 +2,6 @@ package com.TestJava2020.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class PriceResponse {
@@ -16,14 +9,20 @@ public class PriceResponse {
 	public PriceResponse(){}
 		
 	private int productId;
+	
 	private int brandId;
+	
 	private int priceList;
+	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Europe/Madrid")
 	private Date startDate;
+	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Europe/Madrid")
 	private Date endDate;
+	
 	private double price;
 	
+	/*Getters & Setters*/
 	public int getProductId() {
 		return productId;
 	}
@@ -42,13 +41,13 @@ public class PriceResponse {
 	public void setPriceList(int priceList) {
 		this.priceList = priceList;
 	}
-	public Date getStartDate() {
+	public Date getStartDate(){
 		return startDate;
 	}
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public Date getEndDate(){
 		return endDate;
 	}
 	public void setEndDate(Date endDate) {

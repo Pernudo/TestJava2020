@@ -2,6 +2,7 @@ package com.TestJava2020.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +22,11 @@ public class PriceServiceImp implements PriceService{
 	}
 
 	@Override
-	public Price getPrice(Date date, int productId, int brandId) {
+	public Optional<Price> getPrice(Date date, int productId, int brandId) {
 		List<Price> lstPrices = priceRepository.findPrice(date, productId, brandId);
 		
 		// Como tenemos ordenado por prioridad, seleccionamos el primer registro
-		return lstPrices.size()>0 ? lstPrices.get(0) : null;
+		return lstPrices.size()>0 ? Optional.ofNullable(lstPrices.get(0)) : Optional.empty();
 	}
 
 }

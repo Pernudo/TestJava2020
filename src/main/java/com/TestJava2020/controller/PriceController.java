@@ -2,6 +2,7 @@ package com.TestJava2020.controller;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,10 +31,13 @@ public class PriceController {
 	public PriceResponse price(@RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd-HH.mm.ss") Date date, @RequestParam int productId, @RequestParam int brandId) throws ParseException {
 		
 		// Consultamos en la BBDD
-		Price price = priceServ.getPrice(date, productId, brandId);
+		Optional<Price> price = priceServ.getPrice(date, productId, brandId);
 		
 		// Montamos la respuesta
-		PriceResponse priceResp = new PriceResponse(price);
+		PriceResponse priceResp = new PriceResponse();
+		if(price.isPresent()) {
+			priceResp = new PriceResponse(price.get());
+		}
 
 		return priceResp;
 	}
